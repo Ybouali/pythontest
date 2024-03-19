@@ -28,27 +28,20 @@ class Solution(object):
         """
         count = {}
         freq = [[] for i in range(len(nums) + 1)]
+        res = []
 
-        print ("----------- freq start -----------")
-        print (freq)
-        print ("----------------------------------")
-
+        # count the number of unique elements
         for n in nums:
             count[n] = 1 + count.get(n , 0)
 
-        print ("----------- count start -----------")
-        print (count)
-        print ("----------------------------------")
-
+        # append the numder of the element to the value 
+        # Example: 2 existe 3 times so in the freq 3 will be the index and 2 will be the value
         for n, c in count.items():
             freq[c].append(n)
 
-        print ("----------- count start -----------")
-        print (freq)
-        print ("----------------------------------")
-
-        res = []
+        # start the loop from the last element to the first element in descending order
         for i in range(len(freq) - 1, 0, -1):
+            # append the result to the res array until we reach the (k)
             for n in freq[i]:
                 res.append(n)
                 if len(res) == k:
@@ -58,7 +51,7 @@ class Solution(object):
 s = Solution()
 
 nums = [1, 1, 1, 2, 2, 3, 3]
-k = 3
+k = 2
 
 print(f"nums: {nums} && k: {k}")
 print(s.topKFrequent(nums, k))
